@@ -24,10 +24,10 @@ Aplicación fullstack para gestión de clientes, cuentas y movimientos bancarios
 
 ## Estructura del proyecto
 
-bank-api/ -> Backend (Spring Boot)
-bank-frontend/ -> Frontend (Angular)
-database/ -> Script SQL
-BankAPI.postman_collection -> Colección Postman
+- bank-api/ -> Backend (Spring Boot)
+- bank-frontend/ -> Frontend (Angular)
+- database/ -> Script SQL
+- BankAPI.postman_collection -> Colección Postman
 
 ---
 
@@ -42,7 +42,7 @@ bank-api/src/main/resources/application.properties
 Ejemplo:
 spring.datasource.url=jdbc:mysql://localhost:3306/bankdb
 spring.datasource.username=root
-spring.datasource.password=1234
+spring.datasource.password=root
 spring.jpa.hibernate.ddl-auto=none
 
 ---
