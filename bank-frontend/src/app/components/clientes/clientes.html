@@ -1,0 +1,116 @@
+<h2>Clientes</h2>
+
+<!-- BUSCADOR + BOTÓN -->
+<input 
+  type="text" 
+  [(ngModel)]="filtro"
+  (input)="filtrarClientes()"
+  placeholder="Buscar por nombre"
+/>
+
+<button (click)="mostrarFormulario = true">Nuevo Cliente</button>
+
+<br><br>
+
+<!-- FORMULARIO -->
+<div *ngIf="mostrarFormulario">
+  <form (ngSubmit)="crearCliente()" #form="ngForm">
+
+    <!-- ID SOLO VISUAL -->
+    <div *ngIf="nuevo.clienteId">
+      <strong>ID:</strong> {{ nuevo.clienteId }}
+    </div>
+
+    <input type="text" placeholder="Nombre"
+      [(ngModel)]="nuevo.nombre" name="nombre" required #nombre="ngModel">
+
+    <select [(ngModel)]="nuevo.genero" name="genero" required>
+        <option value="" disabled selected>Seleccione Genero</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+    </select>
+
+
+    <input type="numeric" placeholder="Edad"
+      [(ngModel)]="nuevo.edad" name="edad" required #edad="ngModel">
+
+    <input type="text" placeholder="Identificación"
+      [(ngModel)]="nuevo.identificacion" name="identificacion" required #identificacion="ngModel">
+
+    <input type="text" placeholder="Dirección"
+      [(ngModel)]="nuevo.direccion" name="direccion" required #direccion="ngModel">
+
+    <input type="text" placeholder="Teléfono"
+      [(ngModel)]="nuevo.telefono" name="telefono" required #telefono="ngModel">
+
+    <input type="password" placeholder="Contraseña"
+      [(ngModel)]="nuevo.contrasena" name="contrasena" required #contrasena="ngModel">
+
+    <label>
+      <input type="checkbox" [(ngModel)]="nuevo.estado" name="estado">
+      Activo
+    </label>
+
+    <br><br>
+
+    <!-- BOTÓN VALIDADO -->
+    <button 
+      type="submit"
+      [disabled]="
+        !nuevo.nombre?.trim() ||
+        !nuevo.genero?.trim() ||
+        !nuevo.edad ||
+        !nuevo.identificacion?.trim() ||
+        !nuevo.direccion?.trim() ||
+        !nuevo.telefono?.trim() ||
+        !nuevo.contrasena?.trim()
+      "
+    >
+      Guardar
+    </button>
+
+    <button type="button" (click)="cancelar()">Cancelar</button>
+
+  </form>
+</div>
+
+<br>
+
+<!-- TABLA -->
+<p>Total: {{ clientes.length }}</p>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Género</th>
+      <th>Edad</th>
+      <th>Identificación</th>
+      <th>Dirección</th>
+      <th>Teléfono</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (c of clientes; track c.clienteId) {
+      <tr>
+        <td>{{ c.clienteId }}</td>
+        <td>{{ c.nombre }}</td>
+        <td>{{ c.genero }}</td>
+        <td>{{ c.edad }}</td>
+        <td>{{ c.identificacion }}</td>
+        <td>{{ c.direccion }}</td>
+        <td>{{ c.telefono }}</td>
+        <td>{{ c.estado }}</td>
+
+        <td>
+          <button (click)="editar(c)">Editar</button>
+          <button (click)="eliminar(c.clienteId)">Eliminar</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

@@ -1,0 +1,84 @@
+<h2>Reporte de Movimientos</h2>
+
+<!-- FILTROS -->
+<div>
+
+  <!-- Cliente -->
+  <label>Cliente:</label>
+  <select [(ngModel)]="filtro.clienteId" name="clienteId" required>
+
+    <option [ngValue]="null">Seleccione Cliente</option>
+
+    @for (c of clientes; track c.clienteId) {
+      <option [value]="c.clienteId">
+        {{ c.nombre }}
+      </option>
+    }
+
+  </select>
+
+  <br><br>
+
+  <!-- Fecha desde -->
+  <label>Desde:</label>
+  <input type="date" [(ngModel)]="filtro.desde" name="desde" required>
+
+  <br><br>
+
+  <!-- Fecha hasta -->
+  <label>Hasta:</label>
+  <input type="date" [(ngModel)]="filtro.hasta" name="hasta" required>
+
+  <br><br>
+
+  <button (click)="consultar()" [disabled]="!filtro.desde || !filtro.hasta">
+    Consultar
+  </button>
+
+  <button (click)="generarPDF()" [disabled]="reportes.length === 0">
+    Descargar PDF
+  </button>
+
+
+</div>
+
+<br>
+
+<!-- TABLA -->
+<div *ngIf="reportes.length > 0">
+
+  <p>Total registros: {{ reportes.length }}</p>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th>Número Cuenta</th>
+        <th>Tipo Cuenta</th>
+        <th>Saldo Inicial</th>
+        <th>Estado</th>
+        <th>Movimiento</th>
+        <th>Saldo Disponible</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (r of reportes; track r.fecha) {
+        <tr>
+          <td>{{ r.fecha | date:'dd/MM/yyyy HH:mm' }}</td>
+          <td>{{ r.cliente }}</td>
+          <td>{{ r.numeroCuenta }}</td>
+          <td>{{ r.tipoCuenta }}</td>
+          <td>{{ r.saldoInicial }}</td>
+          <td>{{ r.estado }}</td>
+          <td [ngStyle]="{ color: r.movimiento > 0 ? 'green' : 'red', 'font-weight': 'bold' }">
+            {{ r.movimiento }}
+          </td>
+          <td>{{ r.saldoDisponible }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+</div>

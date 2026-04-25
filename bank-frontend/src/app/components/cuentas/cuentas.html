@@ -1,0 +1,104 @@
+<h2>Cuentas</h2>
+
+<!-- BUSCADOR + BOTÓN -->
+<input 
+  type="text" 
+  [(ngModel)]="filtro"
+  (input)="filtrarCuentas()"
+  placeholder="Buscar por cuenta o cliente"
+/>
+
+<button (click)="mostrarFormulario = true">Nueva Cuenta</button>
+
+<br><br>
+
+<!-- FORMULARIO -->
+<div *ngIf="mostrarFormulario">
+  <form (ngSubmit)="crearCuenta()">
+
+    <input
+      type="text"
+      placeholder="Número de Cuenta"
+      [(ngModel)]="nueva.numeroCuenta"
+      name="numeroCuenta"
+      required
+    >
+
+    <select [(ngModel)]="nueva.tipoCuenta" name="tipoCuenta" required>
+      <option value="" disabled selected>Seleccione Tipo</option>
+      <option value="AHORRO">Ahorro</option>
+      <option value="CORRIENTE">Corriente</option>
+    </select>
+
+    <input
+      type="text"
+      inputmode="numeric"
+      placeholder="Saldo Inicial"
+      [(ngModel)]="nueva.saldoInicial"
+      name="saldoInicial"
+      required
+    >
+
+    <select [(ngModel)]="nueva.clienteId" name="clienteId" required>
+      <option value="" disabled selected>Seleccione Cliente</option>
+
+      @for (c of clientes; track c.clienteId) {
+        <option [value]="c.clienteId">
+          {{ c.nombre }}
+        </option>
+      }
+    </select>
+
+    <label>
+      <input type="checkbox" [(ngModel)]="nueva.estado" name="estado">
+      Activo
+    </label>
+
+    <br><br>
+
+    <button 
+      type="submit" 
+      [disabled]="!nueva.tipoCuenta || !nueva.clienteId">
+      Guardar
+    </button>
+
+    <button type="button" (click)="cancelar()">Cancelar</button>
+
+  </form>
+</div>
+
+<br>
+
+<!-- TABLA -->
+<p>Total: {{ cuentas.length }}</p>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Cliente</th>
+      <th>Número Cuenta</th>
+      <th>Tipo</th>
+      <th>Saldo Inicial</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (c of cuentas; track c.cuentaId) {
+      <tr>
+        <td>{{ c.cuentaId }}</td>
+        <td>{{ c.clienteNombre }}</td>
+        <td>{{ c.numeroCuenta }}</td>
+        <td>{{ c.tipoCuenta }}</td>
+        <td>{{ c.saldoInicial }}</td>
+        <td>{{ c.estado }}</td>
+
+        <td>
+          <button (click)="eliminar(c.cuentaId)">Eliminar</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

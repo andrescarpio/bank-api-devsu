@@ -1,0 +1,55 @@
+<h2>Movimientos</h2>
+
+<!-- FORMULARIO -->
+<form (ngSubmit)="ejecutarMovimiento()">
+
+  <!-- Seleccionar cuenta -->
+  <label>Cuenta:</label>
+  <select [(ngModel)]="movimiento.numeroCuenta" name="numeroCuenta" required>
+
+    <option value="" disabled selected>Seleccione Cuenta</option>
+
+    @for (c of cuentas; track c.cuentaId) {
+      <option [value]="c.numeroCuenta">
+        {{ c.numeroCuenta }} - {{ c.tipoCuenta }} - {{ c.clienteNombre }}
+      </option>
+    }
+
+  </select>
+
+  <br><br>
+
+  <!-- Valor -->
+  <label>Valor:</label>
+  <input
+    type="numeric"
+    [(ngModel)]="movimiento.valor"
+    name="valor"
+    placeholder="Ej: 100 (depósito) o -50 (retiro)"
+    required
+  >
+
+  <br><br>
+
+  <button 
+    type="submit"
+    [disabled]="!movimiento.numeroCuenta || !movimiento.valor"
+  >
+    Ejecutar
+  </button>
+
+</form>
+
+<br>
+
+<!-- RESULTADO -->
+<div *ngIf="resultado">
+
+  <h3>Resultado</h3>
+
+  <p><strong>Fecha:</strong> {{ resultado.fecha }}</p>
+  <p><strong>Tipo:</strong> {{ resultado.tipoMovimiento }}</p>
+  <p><strong>Valor:</strong> {{ resultado.valor }}</p>
+  <p><strong>Saldo:</strong> {{ resultado.saldo }}</p>
+
+</div>

@@ -1,0 +1,346 @@
+{
+  "info": {
+    "_postman_id": "ff8b4971-b64c-49f9-b90f-8e87339142c6",
+    "name": "Bank API - Devsu",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "7750312"
+  },
+  "item": [
+    {
+      "name": "Clientes.GET",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/clientes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "clientes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Clientes.POST",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Andres\",\r\n  \"genero\": \"M\",\r\n  \"edad\": 28,\r\n  \"identificacion\": \"123456\",\r\n  \"direccion\": \"Quito\",\r\n  \"telefono\": \"099999999\",\r\n  \"contrasena\": \"1234\",\r\n  \"estado\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/clientes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "clientes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Clientes.DELETE",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/clientes/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "clientes",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Clientes.PUT",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Andres Updated\",\r\n  \"genero\": \"M\",\r\n  \"edad\": 30,\r\n  \"identificacion\": \"999999\",\r\n  \"direccion\": \"Guayaquil\",\r\n  \"telefono\": \"088888888\",\r\n  \"contrasena\": \"1234\",\r\n  \"estado\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/clientes/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "clientes",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Clientes.PATCH",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"estado\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/clientes/3/estado",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "clientes",
+            "3",
+            "estado"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cuentas.POST",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"numeroCuenta\": \"222\",\r\n  \"tipoCuenta\": \"AHORRO\",\r\n  \"saldoInicial\": 100,\r\n  \"estado\": true,\r\n  \"clienteId\": 3\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/cuentas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "cuentas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cuentas.GET.Listar",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/cuentas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "cuentas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cliente.GET.PorCliente",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/cuentas/cliente/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "cuentas",
+            "cliente",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Movimientos.POST",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"numeroCuenta\": \"12345\",\r\n  \"valor\": -100\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/movimientos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "movimientos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Reporte.GET.PorFecha",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/movimientos/reportes?desde=2024-01-01&hasta=2026-12-31",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "movimientos",
+            "reportes"
+          ],
+          "query": [
+            {
+              "key": "desde",
+              "value": "2024-01-01"
+            },
+            {
+              "key": "hasta",
+              "value": "2026-12-31"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Reporte.GET.PorCliente",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/movimientos/reportes?clienteId=1&desde=2024-01-01&hasta=2026-12-31",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "movimientos",
+            "reportes"
+          ],
+          "query": [
+            {
+              "key": "clienteId",
+              "value": "1"
+            },
+            {
+              "key": "desde",
+              "value": "2024-01-01"
+            },
+            {
+              "key": "hasta",
+              "value": "2026-12-31"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Clientes.GET.PorCliente",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/clientes/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "clientes",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    }
+  ]
+}
