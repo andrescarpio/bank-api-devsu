@@ -49,7 +49,7 @@ spring.jpa.hibernate.ddl-auto=none
 
 ## Ejecución del Backend
 
-```bash
+``bash
 cd bank-api
 mvn spring-boot:run
 Backend disponible en:
