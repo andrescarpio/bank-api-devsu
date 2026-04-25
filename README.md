@@ -41,13 +41,10 @@ bank-api/src/main/resources/application.properties
 
 Ejemplo:
 
-spring.datasource.url=jdbc:mysql://localhost:3306/bankdb
-
-spring.datasource.username=root
-
-spring.datasource.password=1234
-
-spring.jpa.hibernate.ddl-auto=none
+- spring.datasource.url=jdbc:mysql://localhost:3306/bankdb
+- spring.datasource.username=root
+- spring.datasource.password=root
+- spring.jpa.hibernate.ddl-auto=none
 
 ---
 
