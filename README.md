@@ -40,28 +40,32 @@ database/BaseDatos.sql
 bank-api/src/main/resources/application.properties
 
 Ejemplo:
+
 spring.datasource.url=jdbc:mysql://localhost:3306/bankdb
+
 spring.datasource.username=root
-spring.datasource.password=root
+
+spring.datasource.password=1234
+
 spring.jpa.hibernate.ddl-auto=none
 
 ---
 
 ## Ejecución del Backend
 
-``bash
-cd bank-api
-mvn spring-boot:run
-Backend disponible en:
+- cd bank-api
+- mvn spring-boot:run
+- Backend disponible en:
 http://localhost:8080
 
 ---
 
 ## Ejecución del Frontend
-cd bank-frontend
-npm install
-ng serve
-Frontend disponible en:
+
+- cd bank-frontend
+- npm install
+- ng serve
+- Frontend disponible en:
 http://localhost:4200
 
 ---
