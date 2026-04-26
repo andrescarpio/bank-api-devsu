@@ -46,6 +46,9 @@ Ejemplo:
 - spring.datasource.password=root
 - spring.jpa.hibernate.ddl-auto=none
 
+3. Adcional se encuentra un backup de la Base de Datos con la estructura y Datos:
+backup.sql
+
 ---
 
 ## Ejecución del Backend
